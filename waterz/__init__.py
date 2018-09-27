@@ -236,10 +236,10 @@ def agglomerate(
             build_extension.build_temp = lib_dir
             build_extension.build_lib  = lib_dir
             build_extension.run()
-
+    print return_merge_history,'This if for merging history'
     return __import__(module_name).agglomerate(affs, thresholds, gt, fragments, aff_threshold_low, aff_threshold_high, return_merge_history)
 
 
 from seg_watershed import watershed
 from seg_util import create_border_mask
-from seg_waterz import waterz
+from seg_waterz import waterz,waterz_2d
