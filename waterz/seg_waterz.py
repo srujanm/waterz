@@ -51,6 +51,7 @@ def waterz(
     thresholds = list(thresholds)
     print "waterz at thresholds " + str(thresholds)
     #print affs.shape
+    """SRUJAN: original_waterz ultimately refers to a call to mahotas.cwatershed"""
     if original_waterz:
         useMask = False
     if fragments is None:
@@ -65,6 +66,11 @@ def waterz(
                 if original_waterz:
                     fragments = watershed(affs, 'maxima_distance')
                 else:
+                    """
+                    SRUJAN:
+                    This is the case for Haidong's best result. 
+                    fragments here refers to watershedded 2D slices of the affinity graph.
+                    """
                     fragments = z_watershed(np.copy(affs),T_threshes=[150],T_dust=150,T_aff=[0.05,0.8,0.2],T_aff_relative=True) 
             # for debug
             #print np.max(affs[0])
@@ -88,6 +94,7 @@ def waterz(
     #    print c
     #print '***************************************************************'
     #print 'done'
+    """SRUJAN: Haidong did not change the agglomerate function at all"""
     for i,out in enumerate(agglomerate(
             affs,
             thresholds,
