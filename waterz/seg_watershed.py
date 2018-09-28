@@ -55,7 +55,7 @@ def z_watershed(affs, T_threshes=[300], T_aff=[0.05,0.8,0.2], T_aff_relative=Tru
         """SRUJAN: generate z-slices of the affinity graph. fraction is one slice"""
         fraction = np.reshape(affs[:,z,:,:],(3,1,width,height))
         """SRUJAN: This essentially sets all affinities in z-direction to zero"""
-        fraction[0] = 0
+        #fraction[0] = 0
         """SRUJAN: zwatershed is an .so object generated from zwatershed.cpp in the source"""
         output = np.array(zwatershed(fraction,T_threshes,T_aff,T_aff_relative,T_dust,T_merge)[0][0])
         """SRUJAN: add an ofset to all nonzero labels in this slice
